@@ -41,10 +41,10 @@
 # Area.create(name: "Sutton")
 # Area.create(name: "Waltham Forest")
 
-# venue_type = ["Park", "Stadium", "Track", "Recreation Ground", "Arena", "Sports Center", "Gym", "Community Hall", "Garden", "Palace", "Classroom", "Office Building", "Street", "Department Store", "Shopping Mall", "Train Station", "Spacehip", "Space Station", "Zero Gravity Module", "Submarine", "The Matrix", "Virtual Reality", "Area 51"]
+# vt = ["Park", "Stadium", "Track", "Recreation Ground", "Arena", "Sports Center", "Gym", "Community Hall", "Garden", "Palace", "Classroom", "Office Building", "Street", "Department Store", "Shopping Mall", "Train Station", "Spacehip", "Space Station", "Zero Gravity Module", "Submarine", "The Matrix", "Virtual Reality", "Area 51"]
 
 # 100.times do
-#     Venue.create(name: Faker::WorldCup.stadium, area_id: rand(1..31), venue_type: venue_type.sample, description: Faker::Hipster.paragraph)
+#     Venue.create(name: Faker::WorldCup.stadium, area_id: rand(1..31), venue_type: vt.sample, description: Faker::Hipster.paragraph)
 # end
 
 # Activity.create(name: "Wife Carrying", description: "Some men complain about getting their wives off their backs -- but not in this sport. Originating in Sonkajarvi, Finland, wife carrying is a sport in which male competitors race to carry their wives through an obstacle course.
