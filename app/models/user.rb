@@ -8,6 +8,7 @@ class User < ApplicationRecord
     has_many :activities, through: :listings
     has_many :player_signups, through: :listings
 
+    
 
 
 
