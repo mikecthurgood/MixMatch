@@ -1,6 +1,10 @@
 class Venue < ApplicationRecord
-    has_many :listings
-    has many :activities, through: :listings
-    belongs_to :area
+#     belongs_to :area
+#     has_many :listings
+#     has_many :activities, through: :listings
 
+    belongs_to :area
+    has_many :listings
+    has_many :activities, through: :listings
+    
 end
