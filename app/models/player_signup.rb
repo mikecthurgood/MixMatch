@@ -1,0 +1,2 @@
+class PlayerSignup < ApplicationRecord
+end
