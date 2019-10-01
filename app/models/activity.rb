@@ -3,6 +3,17 @@ class Activity < ApplicationRecord
     has_many :organisers, through: :listings
     has_many :venues, through: :listings
 
+
+    def slug
+        self.name.downcase.strip.gsub(' ', ‘-’).gsub(/[^\w-]/, ‘’)
+    end
+
+
+    def self.find_by_slug(slug)
+        Activity.all.find { |activity| activity.slug == slug }
+    end
+
+
     # find the most popular activity.
     def self.most_popular
         list = Listing.all.group(:activity_id).count
@@ -67,7 +78,7 @@ class Activity < ApplicationRecord
         organisers = org_ids.map {|id| User.find(id)}
     end
 
-    
+
     def player
         plr_ids = self.listings.map {|list| list.organiser_id}
         players = plr_ids.map {|id| User.find(id)}
