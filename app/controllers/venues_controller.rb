@@ -1,4 +1,5 @@
 class VenuesController < ApplicationController
+  before_action :require_logged_in
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
   # GET /venues

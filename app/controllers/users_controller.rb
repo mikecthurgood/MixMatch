@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -14,7 +15,11 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /users/1/edit
@@ -26,15 +31,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        redirect_to root_path
       else
-        redirect_to new_user_path
+        render 'new'
       end
     end
-  end
+
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
@@ -68,6 +72,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :age, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :age, :bio, :email, :password, :password_confirmation)
     end
 end

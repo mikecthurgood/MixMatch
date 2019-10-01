@@ -1,4 +1,5 @@
 class AreasController < ApplicationController
+  before_action :require_logged_in
   before_action :set_area, only: [:show, :edit, :update, :destroy]
 
   # GET /areas

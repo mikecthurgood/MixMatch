@@ -5,4 +5,17 @@ class Listing < ApplicationRecord
     belongs_to :activity
     belongs_to :organiser, class_name: "User", dependent: :destroy
 
+    validates :title, :venue_id, :activity_id, :organiser_id, presence: true
+    validates :description, {
+        presence: true
+        length: {minimum: 50}
+    }
+    validates :num_players, {
+        presence: true,
+        numericality: { 
+            greater_than: 1,
+            less_than: 21 
+        }
+    }
+
 end

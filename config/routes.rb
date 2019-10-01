@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :activities
   resources :venues
   resources :areas
+  
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'

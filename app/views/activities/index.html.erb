@@ -1,33 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Activities</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Image url</th>
-      <th>Wiki link</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="heading-container">
+  <div class="heading">
+    <h1>Activity List</h1><br>
+  </div>
+  <div class="heading-item">
+    <h3>Want to suggest a new activity? Click <%= link_to 'here', new_activity_path %> to submit your idea.</h3>
+  </div>
+</div>
+    
 
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= activity.name %></td>
-        <td><%= activity.description %></td>
-        <td><%= activity.image_url %></td>
-        <td><%= activity.wiki_link %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Activity', new_activity_path %>
+  <div class='photo-grid-container'>
+    <div class='photo-grid'>
+        <% @activities.each do |activity| %>
+        <div class='photo-grid-item'>   
+          <%= link_to image_tag(activity.image_url), activity_path(activity), class: "image-link" %>
+            <%= link_to activity_path(activity), action: 'go' do %>
+            <div class="overlay">
+            <div class="photo-text">
+            <%= activity.name %>
+            </div>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

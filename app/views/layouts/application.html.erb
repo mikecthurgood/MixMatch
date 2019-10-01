@@ -9,7 +9,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+    <body>
+          <div class='menu-container'>
+            <div class='menu'>
+              <div class='date'><%= Time.now.strftime("%d/%m/%Y") %></div>
+              <div class="links">
+                <div class='signup'>Sign Up</div>
+                <div class='login'>Login</div>
+              </div>
+            </div>
+          </div>
+            <div class="header-container">
+              <div class="header">
+                <div class='subscribe'>Subscribe &#9662;</div>
+                <div class='logo'><img src="https://i.imgur.com/A77x0iz.png" alt="MixMatch Logo"></div>
+                <div class='social'>Social</div>
+              </div>
+            </div>
+     <%= yield %>
   </body>
+   
+  </div>
+
 </html>
