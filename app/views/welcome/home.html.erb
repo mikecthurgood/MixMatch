@@ -1,4 +1,13 @@
-<h1>Hi, <%= @user.name %></h1>
+<div class="heading-container">
+  <div class="heading">
+    <h1>Hi, <%= @user.name %></h1><br>
+  </div>
+  <div class="heading-item">
+    <h3>Want to suggest a new activity? Click <%= link_to 'here', new_activity_path %> to submit your idea.</h3>
+  </div>
+</div>
+
+
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>

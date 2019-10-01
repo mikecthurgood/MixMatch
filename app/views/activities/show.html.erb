@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="activity-show">
+  <div class="activity-heading">
+    <h1><%= @activity.name %></h1>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @activity.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @activity.description %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @activity.image_url %>
-</p>
-
-<p>
-  <strong>Wiki link:</strong>
-  <%= @activity.wiki_link %>
-</p>
-
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+  <div class="activity-details">
+    <div class="activity-image">
+      <img src="<%= @activity.image_url %>" alt="#{<%= @activity.name %>} image">
+    </div>
+    <div class="activity-description">
+        <%= @activity.description %>
+        <br><br>
+        <%= button_to "Find a mixmatch I can join", listings_path, :method => :get %>
+    </div>
+  </div>
+    <div class="activity-wiki">
+      <%= link_to @activity.wiki_link, action: 'go' do %>
+      <strong>Learn more about <%= @activity.name %></strong><br>
+      <%= link_to 'Back', activities_path %>
+      <% end %>
+    </div>
+</div>

@@ -1,12 +1,15 @@
-<H1>Please log in to your MixMatch account</H1>
-<%= form_for @user, url: login_path, method: :post do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="login-page">
+  <div class="login-heading">
+    <H1>Please log in to your MixMatch account</H1>
+  </div>
+  <%= form_for @user, url: login_path, method: :post do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br><br>
 
-  <%= f.submit "log in" %>
-  Or <%= link_to "Sign up", new_user_path %>
-<% end %>
+    <%= f.submit "log in" %>
+  <% end %>
+</div>

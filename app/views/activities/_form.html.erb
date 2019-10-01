@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label 'Description: (please be as detailed as you can)' %>
+    <%= form.text_area :description, size: "50x10", required: true %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :wiki_link %>
-    <%= form.text_field :wiki_link %>
+    <%= form.text_field :wiki_link, required: true%>
   </div>
 
   <div class="actions">

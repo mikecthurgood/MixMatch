@@ -1,4 +1,146 @@
-.activity_home_images {
-    object-fit: scale-down;
-    width: 300px
- }
+.heading-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap
+  }
+
+  .heading {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+  }
+
+  .heading-item {
+    justify-content: right;
+    margin-bottom: 20px;
+  }
+
+  .photo-grid-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .photo-grid {
+    width: 100%;
+    display: flex;
+    justify-content: space-around ;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+  }
+  
+  .photo-grid-item {
+    display: inline;
+    flex-wrap: wrap;
+    box-sizing: border-box
+  }
+
+  .photo-grid-item img {
+    width: 400px;
+    height: 225px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    box-sizing: border-box;
+  }
+  
+  .overlay {
+    position: relative;
+    top: -240px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 95%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #5995DA;
+    border-radius: 25px;
+  }
+
+  .photo-grid-item:hover .overlay {
+    opacity: 0.75;
+  }
+
+  .photo-text {
+    color: white;
+    line-height: 1;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+.image-link:hover {
+    background: none;
+}
+
+.activity-show{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap
+
+}
+
+.activity-heading {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 38px;
+}
+
+.activity-details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.activity-image {
+    justify-content: left;
+    padding-block-end: 50px;
+    padding-right: 50px;
+}
+
+.activity-image img {
+    max-width: 500px;
+    justify-content: left;
+
+}
+
+.activity-description {
+    max-width: 50%; 
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-right: 50px;
+}
+.activity-wiki {
+    justify-content: flex-start;
+    padding-left: 35px;
+}
+
+.new-activity-page {
+    padding-top: 40px;
+    padding-left: 38px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: rgb(240, 119, 39);
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+  }
