@@ -6,5 +6,12 @@ class Venue < ApplicationRecord
     belongs_to :area
     has_many :listings
     has_many :activities, through: :listings
+
+
+    def players
+        
+    end
+
+
     
 end

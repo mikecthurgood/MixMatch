@@ -2,15 +2,23 @@ class ActivitiesController < ApplicationController
   before_action :require_logged_in
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
+    
+
   # GET /activities
   # GET /activities.json
   def index
     @activities = Activity.all.where(authorised: true)
   end
 
-  # GET /activities/1
+  # GET /activities/some-stuff
+  # GET /activities/:slug
   # GET /activities/1.json
   def show
+    @ activity = Activity.find_by_slug(params[:slug])
+    if !@activity
+      redirect_to activities_path
+      flash[:notice] = "Sorry we could not find that page."
+    end
   end
 
   # GET /activities/new

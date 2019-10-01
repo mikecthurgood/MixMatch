@@ -14,6 +14,7 @@ class User < ApplicationRecord
         format: { with: /\A[a-zA-Z]+\z/,
             message: "only allows letters" }
     }
+    
 
     validates :age, {
         presence: true,
