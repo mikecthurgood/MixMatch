@@ -2,6 +2,7 @@ class Area < ApplicationRecord
     has_many :venues
     validates :name, presence: true
 
+    # All listings in this area
     def listings
         list = []
         venues = Venue.all.select {|venue|venue.area_id == self.id}
@@ -15,6 +16,7 @@ class Area < ApplicationRecord
         list
     end
 
+    # all organisers that have a listing in this area
     def organisers
         org = []
         organiser_ids = self.listings.map {|listing| listing.organiser_id}
@@ -26,6 +28,7 @@ class Area < ApplicationRecord
         org.uniq
     end
 
+    # all signups that are linked to a listing in this area
     def signups
         sign_up = []
         lists = self.listings.map {|listing| listing.id}
@@ -38,6 +41,7 @@ class Area < ApplicationRecord
         sign_up
     end
 
+    # All players that have a signup in this area
     def players
         players_in_signup = []
         player_ids = self.signups.map {|sign| sign.player_id}
@@ -49,6 +53,25 @@ class Area < ApplicationRecord
         players_in_signup.uniq
     end
 
+    # most popular sport in area
+    def popular
+        act = self.listings.map {|l| l.activity_id}
+        activities = act.map {|a| Activity.find(a)}
+        counts = Hash.new 0
+        act.each do |id|
+            counts[id] += 1
+        end
+        popular = 0
+        appearances = 0
+        counts.each do |id, value|
+            if value > appearances            
+                appearances = value
+                popular = id
+            end
+        end
+        byebug
+        Activity.find(popular)
+    end
 
 
 end
