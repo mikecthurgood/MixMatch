@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find_by_slug(params[:slug])
+    if !@user
+      redirect_to root_path
+      flash[:notice] = "Sorry we could not find that user."
+    end
   end
 
   # GET /users/new

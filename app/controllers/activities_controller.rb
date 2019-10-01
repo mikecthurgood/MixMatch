@@ -13,10 +13,10 @@ class ActivitiesController < ApplicationController
   # GET /activities/:slug
   # GET /activities/1.json
   def show
-    @ activity = Activity.find_by_slug(params[:slug])
+    @activity = Activity.find_by_slug(params[:slug])
     if !@activity
       redirect_to activities_path
-      flash[:notice] = "Sorry we could not find that page."
+      flash[:notice] = "Sorry we could not find the page for that activity."
     end
   end
 
