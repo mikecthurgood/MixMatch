@@ -10,9 +10,9 @@ class User < ApplicationRecord
 
     validates :name, {
         presence: true,
-        length: { in: 2..20},
-        format: { with: /\A[a-zA-Z]+\z/,
-            message: "only allows letters" }
+        length: { in: 2..30},
+        format: { with: /\A([a-zA-Z]+[ \-']?)+[a-zA-Z]+\z/,
+            message: "Name must be a real name, it only allows letters and a space between names" }
     }
     
 
@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
     validates :email, {
         presence: true,
+        on: :create,
         uniqueness: true,
         format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
     }

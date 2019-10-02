@@ -2,6 +2,9 @@
   <div class="heading">
     <h1>Hi <%= @user.name %>!</h1><br>
   </div>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
   <div class="heading-item">
     <h2>What would you like to do?</h2>
   </div>
