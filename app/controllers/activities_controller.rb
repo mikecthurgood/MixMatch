@@ -7,18 +7,14 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all.where(authorised: true)
+    @activities = Activity.all.where(authorised: true).search(params[:query])
   end
 
   # GET /activities/some-stuff
   # GET /activities/:slug
   # GET /activities/1.json
   def show
-    @activity = Activity.find_by_slug(params[:slug])
-    if !@activity
-      redirect_to activities_path
-      flash[:notice] = "Sorry we could not find the page for that activity."
-    end
+
   end
 
   # GET /activities/new
@@ -73,7 +69,7 @@ class ActivitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find(params[:id])
+      @activity = Activity.find_by_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

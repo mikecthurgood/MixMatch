@@ -171,3 +171,8 @@
 # 1000.times do
 #     PlayerSignup.create(listing_id: rand(1..300), player_id: rand(51..500))
 # end
+
+# Activity.all.each do |activity| 
+#     activity.slug = activity.create_slug
+#     activity.save
+#     end

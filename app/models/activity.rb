@@ -3,20 +3,32 @@ class Activity < ApplicationRecord
     has_many :organisers, through: :listings
     has_many :venues, through: :listings
 
+    after_create :update_slug
+    before_update :assign_slug
+
     validates :name, :image_url, presence: true
     validates :description, {
         presence: true,
         length: { minimum: 100}
     }
+    validates :slug, uniqueness: true
 
-    def slug
-        self.name.downcase.strip.gsub(' ', ‘-’).gsub(/[^\w-]/, ‘’)
+    def create_slug
+        self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/,'')
     end
 
-
-    def self.find_by_slug(slug)
-        Activity.all.find { |activity| activity.slug == slug }
+    def update_slug
+        update_attributes slug: assign_slug
     end
+
+    
+    def self.search(query)
+        if query
+          where('DESCRIPTION like ?', "%#{query}%")        
+        else
+          self.all
+        end
+      end
 
 
     # find the most popular activity.
@@ -88,5 +100,11 @@ class Activity < ApplicationRecord
         plr_ids = self.listings.map {|list| list.organiser_id}
         players = plr_ids.map {|id| User.find(id)}
     end
+    
+      private
+    
+      def assign_slug
+        self.slug = create_slug
+      end
 
 end

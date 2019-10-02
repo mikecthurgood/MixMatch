@@ -5,17 +5,26 @@
     <h1>Activity List</h1><br>
   </div>
   <div class="heading-item">
+  <div class="suggest-new-activity">
     <h3>Want to suggest a new activity? Click <%= link_to 'here', new_activity_path %> to submit your idea.</h3>
   </div>
+    <div class="activity-search">
+      <%= form_tag activities_path, :method => 'get' do %>
+        <p>
+        <%= text_field_tag :query, nil, :placeholder => "Search Activities" %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+      <% end %>
+      <p><a href="/activities">Reset search</a></p>
+  </div>
+  </div>
 </div>
-    
-
   <div class='photo-grid-container'>
     <div class='photo-grid'>
         <% @activities.each do |activity| %>
         <div class='photo-grid-item'>   
-          <%= link_to image_tag(activity.image_url), activity_path(activity), class: "image-link" %>
-            <%= link_to activity_path(activity), action: 'go' do %>
+          <%= link_to image_tag(activity.image_url), activity, class: "image-link" %>
+            <%= link_to "activities/#{activity.slug}", action: 'go' do %>
             <div class="overlay">
             <div class="photo-text">
             <%= activity.name %>
