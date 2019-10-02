@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   root 'welcome#home'
 
+  get '/users/:id/edit_password', to: 'user#edit_password', as: 'edit_user_password'
+  patch '/users/:id', to: 'user#edit_password'
+
   # get '/activities/:slug', to: 'activities#show', as: 'activity'
   # get '/activities/:slug/edit', to: 'activities#edit', as: 'edit_activity'
   # patch 'activities/:slug', to: 'activities#update'

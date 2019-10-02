@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_password
+    @user = User.find(params[:id])
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -61,6 +65,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_password
+    @user = User.find(params[:id])
+  end
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
