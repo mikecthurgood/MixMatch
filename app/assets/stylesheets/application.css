@@ -13,17 +13,7 @@
  *= require_tree .
  *= require_self
  */
- * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
 
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: azure
-  }
 
   .header-container {
     color: #5995DA;
@@ -123,16 +113,64 @@
     color: white;
   }
   
-  .login-page {
-    margin-left: 20px;
-    margin-top: 20px;
-  }
-
   .login-heading {
     margin-top: 20px;
     margin-bottom: 20px;
   }
 
+  .site-content {
+    margin-left: 30px;
+    margin-top: 30px
+  }
+
+  .heading-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap
+  }
+
+  .heading {
+    color: #5995DA;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .heading-item {
+    justify-content: right;
+    margin-bottom: 20px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .home-content {
+    padding-top: 2%;
+    width: 100%;
+  }
+
+  .home-images {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .home-image-link img {
+    max-width: 100%;
+    min-width: 300px;
+  }
+
+  .home-image-link {
+    max-width: 40%
+  }
+
+  .home-images a {
+    
+
+  }
+
+  
 
   
   

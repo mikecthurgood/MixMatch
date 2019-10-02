@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #fff;
   color: #333;
@@ -5,6 +11,10 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  background-color: azure;
+  margin: 0;
+  padding: 0;
+  
 }
 
 p, ol, ul, td {
@@ -63,6 +73,10 @@ div {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 
+  h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #5995DA;
+  }
   h2 {
     text-align: left;
     font-weight: bold;

@@ -23,7 +23,7 @@
     <div class='photo-grid'>
         <% @activities.each do |activity| %>
         <div class='photo-grid-item'>   
-          <%= link_to image_tag(activity.image_url), activity, class: "image-link" %>
+          <img src=<%= activity.image_url %> alt="" class="image-link">
             <%= link_to "activities/#{activity.slug}", action: 'go' do %>
             <div class="overlay">
             <div class="photo-text">

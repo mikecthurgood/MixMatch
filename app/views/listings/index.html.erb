@@ -1,29 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listings</h1>
+<br><br>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Venue</th>
       <th>Activity</th>
-      <th>Organiser</th>
-      <th>Num players</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th>Venue</th>
+      <th>Players needed</th>
     </tr>
   </thead>
 
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.title %></td>
-        <td><%= listing.venue_id %></td>
-        <td><%= listing.activity_id %></td>
-        <td><%= listing.organiser_id %></td>
+        <td><%= link_to listing.title, listing_path(listing) %></td>
+        <% act = Activity.find_by(id: listing.activity_id) %>
+          <td><%= act.name  %></td>
+        <% ven = Venue.find_by(id: listing.venue_id) %>
+          <td><%= ven.name %></td>
         <td><%= listing.num_players %></td>
-        <td><%= listing.description %></td>
+        <% if @user.id == listing. organiser_id %>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        
+        <% end %>
+        
       </tr>
     <% end %>
   </tbody>

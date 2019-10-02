@@ -1,34 +1,39 @@
 <p id="notice"><%= notice %></p>
+<div class="listing-show">
+  <div class="listing-title">
+    <h1><%= @listing.title %></h1><br>
+    <h2 style><%= @listing.num_players - @listing.players.length %> spots remaining.</h2>
+    <br><br>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
+  <div class="listing">
+    <div class="activity-image">
+      <img src="<%= @activity.image_url %>" alt="#{<%= @activity.name %>} image">
+    </div>
 
-<p>
-  <strong>Venue:</strong>
-  <%= @listing.venue_id %>
-</p>
+    <div class="listing-details">
+      <div class="listing-description">
+        <strong>Description:</strong><br>
+        <%= @listing.description %>
+      </div>
+    </div>
 
-<p>
-  <strong>Activity:</strong>
-  <%= @listing.activity_id %>
-</p>
+    <div class="listing-specifics">
+      <strong>Venue:</strong>
+      <%= @venue.name %> <br>
+      <strong>Activity:</strong>
+      <%= @activity.name %> <br>
+      <strong>Organiser:</strong>
+      <%= @organiser.name %> <br>
+      <strong>Number of players required:</strong>
+      <%= @listing.num_players %> <br><br>
+      <strong>Number of players attending:</strong>
+      <%= @listing.players.length %>
+    </div>
+  </div>
 
-<p>
-  <strong>Organiser:</strong>
-  <%= @listing.organiser_id %>
-</p>
-
-<p>
-  <strong>Num players:</strong>
-  <%= @listing.num_players %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+  <% if @user.id == @listing.organiser_id %>
+    <%= link_to 'Edit', edit_listing_path(@listing) %> |
+  <% end %>
+  <%= link_to 'Back', listings_path %>
+</div>

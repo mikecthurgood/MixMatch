@@ -30,7 +30,6 @@ class Activity < ApplicationRecord
         end
       end
 
-
     # find the most popular activity.
     def self.most_popular
         list = Listing.all.group(:activity_id).count

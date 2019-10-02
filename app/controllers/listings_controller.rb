@@ -5,12 +5,15 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.all.sort.reverse
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @activity = Activity.find(@listing.activity_id)
+    @venue = Venue.find(@listing.venue_id)
+    @organiser = User.find(@listing.organiser_id)
   end
 
   # GET /listings/new
@@ -20,6 +23,10 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    unless @user.id == @listing.organiser_id
+      redirect_to listing_path(@listing)
+      flash[:notice] = "Sorry, you cannot edit someone elses listing."
+    end
   end
 
   # POST /listings

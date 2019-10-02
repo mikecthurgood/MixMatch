@@ -1,27 +1,18 @@
 <p id="notice"><%= notice %></p>
-
+<div class="areas">
 <h1>Areas</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @areas.each do |area| %>
-      <tr>
-        <td><%= area.name %></td>
-        <td><%= link_to 'Show', area %></td>
-        <td><%= link_to 'Edit', edit_area_path(area) %></td>
-        <td><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<br><br>
+ <% if @user.admin %>     
 <%= link_to 'New Area', new_area_path %>
+<br><br>
+<% end %>
+<div class="area-list">
+<% @areas.each do |area| %>
+<%= link_to area.name, area_path(area) %> 
+  <% if @user.admin %> | 
+    <%= link_to 'Edit', edit_area_path(area) %> | <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <br><br>
+<% end %>
+</div>
+</div>

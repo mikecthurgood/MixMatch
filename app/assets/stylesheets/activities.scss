@@ -1,25 +1,4 @@
-.heading-container {
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    flex-wrap: wrap
-  }
 
-  .heading {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .heading-item {
-    justify-content: right;
-    margin-bottom: 20px;
-    flex-direction: column;
-    justify-content: center;
-  }
 
   .suggest-new-activity {
     padding-bottom: 15px;
@@ -95,7 +74,6 @@
 .activity-show{
     margin-top: 30px;
     margin-bottom: 30px;
-    margin-left: 20px;
     width: 100vw;
     display: flex;
     flex-wrap: wrap
@@ -119,7 +97,7 @@
 .activity-image {
     justify-content: left;
     padding-block-end: 50px;
-    padding-right: 50px;
+    padding-right: 10px;
 }
 
 .activity-image img {
@@ -141,7 +119,6 @@
 
 .new-activity-page {
     padding-top: 40px;
-    padding-left: 38px;
 }
 
 input[type=button], input[type=submit], input[type=reset] {

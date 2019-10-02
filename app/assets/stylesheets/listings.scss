@@ -1,3 +1,36 @@
 // Place all the styles related to the Listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.listing-show {
+    width: 95vw;
+}
+
+.listing-title {
+
+}
+
+.listing {
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.activity-image {
+
+}
+.listing-details {
+    width: 50%;
+    justify-content: left;
+
+}
+.listing-description {
+
+    width: 100%;
+    padding-top: 20px;
+
+}
+.listing-specifics {
+    padding-top: 20px;
+
+}
