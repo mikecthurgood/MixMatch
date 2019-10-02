@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 <div class="areas">
-<h1>Areas</h1>
-<br><br>
- <% if @user.admin %>     
-<%= link_to 'New Area', new_area_path %>
-<br><br>
-<% end %>
-<div class="area-list">
-<% @areas.each do |area| %>
-<%= link_to area.name, area_path(area) %> 
-  <% if @user.admin %> | 
-    <%= link_to 'Edit', edit_area_path(area) %> | <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+  <h1>Areas</h1>
   <br><br>
-<% end %>
-</div>
+  <% if @user.admin %>     
+  <%= link_to 'New Area', new_area_path %>
+  <br><br>
+  <% end %>
+  <div class="area-list">
+    <% @areas.each do |area| %>
+    <%= link_to area_path(area), action: 'go' do %>
+      <div class="area-card">
+        <h2><%= area.name %></h2>
+        <h3>Current listings: <%= area.listings.length %></h3>
+        <% if @user.admin %> | 
+          <%= link_to 'Edit', edit_area_path(area) %> | <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  </div>
 </div>

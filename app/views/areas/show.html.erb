@@ -6,54 +6,38 @@
     <br>
   </div>
   <div class="area-details">
-    <div class="area-stats">
-      <div class="area-stat-detail">
-        <h2>Most Popular Activity</h2>
-        <%= @most_popular.name %>
-      </div>
-      <div class="area-stat-detail">
-        <h2>Number of organisers</h2>
-        <%= @organisers.length %>
-      </div>
-      <div class="area-stat-detail">
-        <h2>Number of players</h2>
-        <%= @players.length %>
+    <div class="area-stats-card">
+      <img src="https://icon-library.net/images/trophy-icon/trophy-icon-21.jpg" alt="trophy">
+      <div class="container">
+        <p><strong>Most Popular Activity:</strong> <%= @most_popular.name %></p>
+        <p><strong>Number of organisers:</strong> <%= @organisers.length %></p>
+        <p><strong>Number of players:</strong> <%= @players.length %></p>
       </div>
     </div>
   <div class="area-listings">
     <div class="area-listing-title"> 
       <h2>All listings in this area</h2><br>
     </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Activity</th>
-            <th>Venue</th>
-            <th>Total Players needed</th>
-            <th>Spaces remaining</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @listings.each do |listing| %>
-            <tr>
-              <td><%= link_to listing.title, listing_path(listing) %></td>
-              <% act = Activity.find_by(id: listing.activity_id) %> 
-                <td><%= act.name  %></td>
-              <% ven = Venue.find_by(id: listing.venue_id) %>
-                <td><%= ven.form_name %></td>
-              <td align="center"><%= listing.num_players %></td> 
-              <td align="center"><%= listing.num_players - listing.players.length %></td>       
-              <% if @user.id == listing.organiser_id %>
-              <td><%= link_to 'Edit my listing', edit_listing_path(listing) %></td>
-              <td><%= link_to 'Delete listing', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <% end %>
-              
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+
+    <div class="area-activities">
+    <% @listings.each do |listing| %>
+    <%= link_to listing_path(listing), action: 'go' do %>
+      <div class="activity-card">
+      <div class="activity-card-image">
+      <% activity = Activity.find_by(id: listing.activity_id) %> 
+      <img src=<%= activity.image_url %> alt=<%activity.name%>>
       </div>
+        <h2><%= listing.title %></h2><br>
+          <h3><%= activity.name %></h3>
+          <% ven = Venue.find_by(id: listing.venue_id) %>
+          <p>Venue: <%= ven.name %></p>
+          <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
+        </div>
+        <% end %>
+      <% end %>
+
+            
+                </div>
     </div>
   <%= link_to 'Back', areas_path %>
 </div>
