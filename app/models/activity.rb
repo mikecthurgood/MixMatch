@@ -8,10 +8,10 @@ class Activity < ApplicationRecord
 
     validates :name, :image_url, presence: true
     validates :description, {
-        presence: true,
-        length: { minimum: 100}
-    }
-    validates :slug, uniqueness: true
+            presence: true,
+            length: { minimum: 100}
+        }
+        validates :slug, uniqueness: true
 
     def create_slug
         self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/,'')

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :areas
     resources :listings
   end
+
+  post 'listings/:id', to: 'listings#join', as: 'join_listing'
+
   # param: :slug
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create'

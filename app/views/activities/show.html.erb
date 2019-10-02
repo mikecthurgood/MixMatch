@@ -14,7 +14,7 @@
     <div class="activity-description">
         <%= @activity.description %>
         <br><br>
-        <%= button_to "Find a mixmatch I can join", listings_path, :method => :get %>
+        <%= button_to "Find a mixmatch I can join", "/listings", :method => :get, :params => { activity_id: @activity.id } %>
     </div>
   </div>
     <div class="activity-wiki">

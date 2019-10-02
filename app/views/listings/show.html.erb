@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
+<br>
 <div class="listing-show">
   <div class="listing-title">
     <h1><%= @listing.title %></h1><br>
-    <h2 style><%= @listing.num_players - @listing.players.length %> spots remaining.</h2>
+    <h2 style><%= @listing.num_players - @listing.players.length %> spots remaining.</h2><br>
+      <%= button_to "I'm in!", join_listing_path, :method => :post, :params => { listing_id: @listing.id } %>
     <br><br>
   </div>
 
@@ -19,21 +21,36 @@
     </div>
 
     <div class="listing-specifics">
+      <div class="listing-item">
       <strong>Venue:</strong>
       <%= @venue.name %> <br>
+      </div>
+      <div class="listing-item">
       <strong>Activity:</strong>
       <%= @activity.name %> <br>
+      </div>
+      <div class="listing-item">
       <strong>Organiser:</strong>
       <%= @organiser.name %> <br>
+      </div>
+      <div class="listing-item">
+      <strong>Contact email:</strong>
+      <%= @organiser.email %> <br>
+      </div>
+      <div class="listing-item">
       <strong>Number of players required:</strong>
       <%= @listing.num_players %> <br><br>
+      </div>
+      <div class="listing-item">
       <strong>Number of players attending:</strong>
       <%= @listing.players.length %>
+      </div>
     </div>
   </div>
 
   <% if @user.id == @listing.organiser_id %>
-    <%= link_to 'Edit', edit_listing_path(@listing) %> |
+    <%= link_to 'Edit Listing', edit_listing_path(@listing) %> |
+    <%= link_to 'Delete Listing', @listing, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <% end %>
   <%= link_to 'Back', listings_path %>
 </div>

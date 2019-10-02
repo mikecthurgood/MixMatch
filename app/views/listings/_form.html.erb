@@ -18,27 +18,22 @@
 
   <div class="field">
     <%= form.label :venue_id %>
-    <%= form.number_field :venue_id %>
+    <%= form.collection_select(:venue_id, Venue.all.sort_by(&:form_name), :id, :form_name) %>
   </div>
 
   <div class="field">
     <%= form.label :activity_id %>
-    <%= form.number_field :activity_id %>
+    <%= form.collection_select(:activity_id, Activity.all, :id, :name) %>
   </div>
 
   <div class="field">
-    <%= form.label :organiser_id %>
-    <%= form.number_field :organiser_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :num_players %>
+    <%= form.label 'Number of players needed (Max 20)' %>
     <%= form.number_field :num_players %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description, size: "50x10" %>
   </div>
 
   <div class="actions">

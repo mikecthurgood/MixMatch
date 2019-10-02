@@ -154,20 +154,17 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    box-sizing: border-box;
   }
 
   .home-image-link img {
     max-width: 100%;
     min-width: 300px;
+    
   }
 
   .home-image-link {
-    max-width: 40%
-  }
-
-  .home-images a {
-    
-
+    max-width: 40%;
   }
 
   

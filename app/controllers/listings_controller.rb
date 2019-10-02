@@ -5,7 +5,27 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all.sort.reverse
+    if !params[:activity_id].blank?
+      @listings = Listing.all.where(activity_id: params[:activity_id]).reverse
+    else
+      @listings = Listing.all.reverse
+    end
+  end
+
+  def join
+    listing = Listing.find(params[:id])
+    if listing.players.include? @user
+      redirect_to listing_path(listing)
+      flash[:notice] = "You're already signed up to this event!"
+    elsif listing.organiser_id == @user.id
+      redirect_to listing_path(listing)
+      flash[:notice] = "You can't sign up to your own event!"
+    else
+      listing.players << @user
+      activity = Activity.find(listing.activity_id)
+      redirect_to listing_path(listing)
+      flash[:notice] = "You're all signed up for #{activity.name}!"
+    end
   end
 
   # GET /listings/1
@@ -32,8 +52,9 @@ class ListingsController < ApplicationController
   # POST /listings
   # POST /listings.json
   def create
+    byebug
     @listing = Listing.new(listing_params)
-
+    @listing.organiser_id = @user.id
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }

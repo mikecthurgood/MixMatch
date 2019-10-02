@@ -2,6 +2,9 @@
 
 <h1>Listings</h1>
 <br><br>
+<a href=<%=new_listing_path%>> <h2>Create Listing</h2> </a>
+<br>
+
 
 <table>
   <thead>
@@ -9,7 +12,8 @@
       <th>Title</th>
       <th>Activity</th>
       <th>Venue</th>
-      <th>Players needed</th>
+      <th>Total Players needed</th>
+      <th>Spaces remaining</th>
     </tr>
   </thead>
 
@@ -17,14 +21,15 @@
     <% @listings.each do |listing| %>
       <tr>
         <td><%= link_to listing.title, listing_path(listing) %></td>
-        <% act = Activity.find_by(id: listing.activity_id) %>
+        <% act = Activity.find_by(id: listing.activity_id) %> 
           <td><%= act.name  %></td>
         <% ven = Venue.find_by(id: listing.venue_id) %>
-          <td><%= ven.name %></td>
-        <td><%= listing.num_players %></td>
-        <% if @user.id == listing. organiser_id %>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        
+          <td><%= ven.form_name %></td>
+        <td align="center"><%= listing.num_players %></td> 
+        <td align="center"><%= listing.num_players - listing.players.length %></td>       
+        <% if @user.id == listing.organiser_id %>
+        <td><%= link_to 'Edit my listing', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Delete listing', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
         
       </tr>
@@ -34,4 +39,4 @@
 
 <br>
 
-<%= link_to 'New Listing', new_listing_path %>
+

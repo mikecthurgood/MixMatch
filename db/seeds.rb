@@ -176,3 +176,7 @@
 #     activity.slug = activity.create_slug
 #     activity.save
 #     end
+
+Venue.all.each do |venue|
+    venue.assign_form_name
+end

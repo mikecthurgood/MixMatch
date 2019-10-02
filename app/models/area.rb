@@ -8,7 +8,6 @@ class Area < ApplicationRecord
         venues = Venue.all.select {|venue|venue.area_id == self.id}
         venue_ids = venues.map {|venue| venue.id}
         Listing.all.select do |listing|
-            # byebug
             if venue_ids.any?(listing.venue_id)
                 list << listing
             end
@@ -33,7 +32,6 @@ class Area < ApplicationRecord
         sign_up = []
         lists = self.listings.map {|listing| listing.id}
         PlayerSignup.all.select do |signup|
-            # byebug
             if lists.any?(signup.listing_id)
                 sign_up << signup
             end
@@ -69,7 +67,6 @@ class Area < ApplicationRecord
                 popular = id
             end
         end
-        byebug
         Activity.find(popular)
     end
 

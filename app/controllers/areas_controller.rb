@@ -11,6 +11,11 @@ class AreasController < ApplicationController
   # GET /areas/1
   # GET /areas/1.json
   def show
+    @listings = @area.listings
+    @organisers = @area.organisers
+    @signups = @area.signups
+    @players = @area.players
+    @most_popular = @area.popular
   end
 
   # GET /areas/new
