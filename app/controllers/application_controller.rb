@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     helper_method :logged_in?
+    helper_method :require_admin?
     before_action :current_user
   
     
@@ -23,4 +24,12 @@ class ApplicationController < ActionController::Base
         redirect_to login_path
       end
     end
+
+    def require_admin?
+      unless  @user.admin
+        flash[:notice] = "Sorry only administrators can view this page"
+        redirect_to root_path
+      end
+    end
+
 end

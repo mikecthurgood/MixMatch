@@ -1,6 +1,40 @@
-<h1>Editing User</h1>
+<h1>Create A New MixMatch Account</h1>
+<div class="user_errors">
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors on your signup: </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+    
+<div class="new_user_form">
+<%= form_for @user, controller: 'users', action: 'update' do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, required: true %>
 
-<%= render 'form', user: @user %>
+  <%= f.label :age %>
+  <%= f.number_field :age, required: true %>
+
+  <%= f.label 'Bio (Optional)' %>
+  <%= f.text_area :bio, size: "30x10" %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%# <%= f.label :password %>
+  <%# <%= f.password_field :password %>
+
+  <%# <%= f.label :password_confirmation %>
+  <%# <%= f.password_field :password_confirmation %>
+
+  <%= f.submit "update" %>
+<% end %>
+</div>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

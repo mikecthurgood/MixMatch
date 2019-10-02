@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_logged_in, only: [:index, :show, :edit, :update, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in, only: [:show, :update]
+  before_action :set_user, only: [:show]
+  before_action :require_admin?, only: [:index, :edit, :destroy, :update]
 
   # GET /users
   # GET /users.json
@@ -11,10 +12,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find_by_slug(params[:slug])
     if !@user
       redirect_to root_path
-      flash[:notice] = "Sorry we could not find that user."
     end
   end
 
@@ -29,6 +28,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -48,6 +48,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = User.find(params[:id])
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

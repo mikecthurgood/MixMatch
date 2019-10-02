@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'admins/scaffold'
   resources :player_signups
   resources :listings
-  resources :users, only: [:index, :new, :create, :show, :edit, :update]
+  resources :users
   resources :activities
   resources :venues
   resources :areas, only: [:index, :show] 
