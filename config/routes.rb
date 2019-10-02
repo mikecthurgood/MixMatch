@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  get 'admins/scaffold'
   resources :player_signups
   resources :listings
-  resources :users
+  resources :users, only: [:index, :new, :create, :show, :edit, :update]
   resources :activities
   resources :venues
-  resources :areas
+  resources :areas, only: [:index, :show] 
+  namespace :admin do
+    resources :users, only: [:delete]
+    resources :venues, only: [:delete]
+    resources :activities
+    resources :areas
+    resources :listings
+  end
   # param: :slug
   get '/login' => 'sessions#new', as: 'login'
   post '/login' => 'sessions#create'
