@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     @profile = User.find(params[:id])
 
     respond_to do |format|
-      if @profile.update(user_params)
+      if @profile.update_attributes(user_params)
         format.html { redirect_to @profile, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
