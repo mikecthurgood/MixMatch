@@ -165,11 +165,16 @@
 
 
 # 300.times do
-#     Listing.create(title: Faker::Lorem.sentence, venue_id: rand(1..100), activity_id: rand(1..30), organiser_id: rand(1..50), num_players: rand(1..20), description: Faker::Hipster.paragraph )
+#     player_numbers = rand(1..20)
+#     activity_id = rand(1..30)
+#     activity = Activity.all.find(activity_id)
+#     titles = ["#{player_numbers} players required for #{activity.name}", "Seeking #{player_numbers} people for #{activity.name}", "#{activity.name}!!", "Wanted: #{player_numbers} for some #{activity.name} fun", "Team members required", "Looking for #{player_numbers} people", "Join me for #{activity.name}"]
+#     date = "#{rand(10..30)}/#{rand(10..12)}/2019"
+#     Listing.create(title: titles.sample, venue_id: rand(1..100), activity_id: activity_id, organiser_id: rand(1..40), num_players: player_numbers, description: Faker::Hipster.paragraph, date: date )
 # end
 
 # 1000.times do
-#     PlayerSignup.create(listing_id: rand(1..300), player_id: rand(51..500))
+#     PlayerSignup.create(listing_id: rand(1447..1732), player_id: rand(41..500))
 # end
 
 # Activity.all.each do |activity| 
@@ -177,6 +182,10 @@
 #     activity.save
 #     end
 
-Venue.all.each do |venue|
-    venue.assign_form_name
-end
+# Venue.all.each do |venue|
+#     venue.assign_form_name
+# end
+
+# Listing.all.each do |listing|
+#     listing.assign_search_tags
+# end

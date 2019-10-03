@@ -10,7 +10,7 @@
     <% @areas.each do |area| %>
     <%= link_to area_path(area), action: 'go' do %>
       <div class="area-card">
-        <h2><%= area.name %></h2>
+        <h2><%= area.name %></h2><br>
         <h3>Current listings: <%= area.listings.length %></h3>
         <% if @user.admin %> | 
           <%= link_to 'Edit', edit_area_path(area) %> | <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %>

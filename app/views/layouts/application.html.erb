@@ -9,29 +9,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-    <body>
-  <div class='menu-container'>
-    <div class='menu'>
-      <div class='nav'>
-        <%= link_to 'Home', root_path %>
-        <%= link_to 'Activities', activities_path %>
-        <%= link_to 'Listings', listings_path %>
-        <%= link_to 'Areas', areas_path %>
-      </div>
-        <% if logged_in? %>
-        <div class="link-button">
-          Logged In as <%= @user.name %>
-          <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-          <input type=submit value='logout'>
+  <body>
+  <div class= "page-container">
+    <div class='menu-container'>
+      <div class='menu'>
+        <div class='nav'>
+          <%= link_to 'Home', root_path %>
+          <%= link_to 'Activities', activities_path %>
+          <%= link_to 'Listings', listings_path %>
+          <%= link_to 'Areas', areas_path %>
+        </div>
+          <% if logged_in? %>
+          <div class="link-button">
+            Logged In as <%= link_to @user.name, user_path(@user) %>
+            <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+            <input type=submit value='logout'>
+            <% end %>
+          </div>
+          <% else %>
+          <div class="links">
+            <div class='signup'><a href="users/new">Sign Up</a></div>
           <% end %>
         </div>
-        <% else %>
-        <div class="links">
-          <div class='signup'><a href="users/new">Sign Up</a></div>
-        <% end %>
       </div>
     </div>
-  </div>
     <div class="header-container">
       <div class="header">
         <div class='subscribe'></div>
@@ -42,8 +43,43 @@
     <div class="site-content">
       <%= yield %>
     </div>
-  </body>
-   
   </div>
 
+    <div class="footer-container">
+      <div class="footer">
+        <div class="footer-logo">
+          <img src="https://i.imgur.com/wOJk64P.png" alt="logo">
+        </div>
+        <div class="copyright">
+          <p>Created with love by<br>MainMan Webworks. &copy; 2019. </p>
+        </div>
+        <div class="footer-items">
+          <div class="nav-menu">
+            <p><strong>Navigate</strong></p>
+            <p><%= link_to 'Activities', activities_path %></p>
+            <p><%= link_to 'Listings', listings_path %></p>
+            <p><%= link_to 'Areas', areas_path %></p>
+            <p><a href="mailto:support@mixmatch.com">Contact Us</a></p>
+            <p><%= link_to 'About MixMatch', root_path %></p>
+          </div>
+           <div class="legal-bumf">
+            <p><strong>Legal</strong></p>
+            <p>Privacy Policy</p>
+            <p>Terms and Conditions</p>
+          </div>
+          <div class="footer-account">
+            <p><strong>User</strong></p>
+            <% if @user.id %>
+              <p><%= link_to 'My Account', user_path(@user) %></p>
+              <p><%= link_to 'My Listings', listings_path %></p> 
+            <% else %>
+              <p><%= link_to 'Log In', root_path %></p>
+              <p><%= link_to 'Create Account', new_user_path %></p> 
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
 </html>

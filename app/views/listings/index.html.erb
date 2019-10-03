@@ -22,8 +22,8 @@
 <div class="area-activities">
 
 <%= link_to new_listing_path, action: 'go' do %>
-      <div class="activity-card">
-      <div class="activity-card-image">
+      <div class="new-listing-card">
+      <div class="new-listing-card-image">
       <img src="https://icon-library.net/images/plus-icon-transparent/plus-icon-transparent-5.jpg" alt="add new activity">
       </div>
       <br><br>
@@ -34,15 +34,17 @@
 
     <% @listings.each do |listing| %>
     <%= link_to listing_path(listing), action: 'go' do %>
-      <div class="activity-card">
-      <div class="activity-card-image">
+      <div class="listing-card">
+      <div class="listing-card-image">
       <% activity = Activity.find_by(id: listing.activity_id) %> 
       <img src=<%= activity.image_url %> alt=<%activity.name%>>
       </div>
-        <h2><%= listing.title %></h2><br>
-          <h3><%= activity.name %></h3>
+      <br>
+        <h3><%= listing.title %></h3>
+          <p><%= listing.date.strftime("%a, %d %b") %></p><br>
+          <h4><%= activity.name %></h4><br>
           <% ven = Venue.find_by(id: listing.venue_id) %>
-          <p>Venue: <%= ven.name %></p>
+          <p><%= ven.form_name %></p>
           <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
         </div>
         <% end %>

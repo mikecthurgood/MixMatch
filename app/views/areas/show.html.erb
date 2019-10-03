@@ -22,8 +22,8 @@
     <div class="area-activities">
     <% @listings.each do |listing| %>
     <%= link_to listing_path(listing), action: 'go' do %>
-      <div class="activity-card">
-      <div class="activity-card-image">
+      <div class="listing-card">
+      <div class="listing-card-image">
       <% activity = Activity.find_by(id: listing.activity_id) %> 
       <img src=<%= activity.image_url %> alt=<%activity.name%>>
       </div>

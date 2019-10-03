@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
     <%= form.label :venue_id %>
     <%= form.collection_select(:venue_id, Venue.all.sort_by(&:form_name), :id, :form_name) %>
   </div>

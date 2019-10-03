@@ -25,33 +25,32 @@
   .photo-grid-item {
     display: inline;
     flex-wrap: wrap;
-    box-sizing: border-box
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
 
   .photo-grid-item img {
     width: 400px;
     height: 225px;
-    margin-bottom: 10px;
-    border-radius: 25px;
     box-sizing: border-box;
   }
   
   .overlay {
     position: relative;
-    top: -240px;
+    top: -70px;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 95%;
+    height: 20%;
     width: 100%;
     opacity: 0;
     transition: .5s ease;
     background-color: #5995DA;
-    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
   }
 
   .photo-grid-item:hover .overlay {
-    opacity: 0.75;
+    opacity: 1;
   }
 
   .photo-text {
@@ -73,7 +72,7 @@
 
 .activity-show{
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10%;
     width: 100vw;
     display: flex;
     flex-wrap: wrap
@@ -131,3 +130,54 @@ input[type=button], input[type=submit], input[type=reset] {
     cursor: pointer;
     border-radius: 25px;
   }
+
+
+  .activity-card {
+    /* Add shadows to create the "card" effect */
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin: 5px;
+    text-decoration: none;
+    max-width: 400px;
+    height: 300px;
+    text-align: center;
+  }
+
+  .activity-card-image {
+    width: 100%;
+    max-height: 70%;
+    overflow: hidden;
+  }
+
+  .activity-card-image img {
+      width: 100%;
+      clip-path: fill-box;
+      border-radius: 5px 5px 0 0;
+      &:hover {
+        transition: 0.3s;
+      }
+  }
+
+  .activity-card a {
+      text-decoration: none;
+      
+      &:hover {
+        color: #5995DA;
+        transition: 0.3s;
+      }
+  }
+
+  .activity-card h3 {
+      color: #f07727;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .activity-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    text-decoration: none;
+  }
+
+
+  
+
