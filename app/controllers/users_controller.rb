@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_logged_in, only: [:show, :update]
-  before_action :set_user, only: [:show]
-  before_action :require_admin?, only: [:index, :edit, :destroy, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_admin?, only: [:index, :destroy]
 
   # GET /users
   # GET /users.json
@@ -54,15 +54,15 @@ class UsersController < ApplicationController
   def update
     @profile = User.find(params[:id])
 
-    respond_to do |format|
-      if @profile.update_attributes(user_params)
-        format.html { redirect_to @profile, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
-      else
-        format.html { render :edit }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @profile.update_attributes(user_params)
+          format.html { redirect_to @profile, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @profile }
+        else
+          format.html { render :edit }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   def update_password
