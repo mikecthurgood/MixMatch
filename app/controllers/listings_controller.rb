@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   before_action :require_logged_in
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+
   # GET /listings
   # GET /listings.json
   def index
@@ -52,7 +53,6 @@ class ListingsController < ApplicationController
   # POST /listings
   # POST /listings.json
   def create
-    byebug
     @listing = Listing.new(listing_params)
     @listing.organiser_id = @user.id
     respond_to do |format|
@@ -98,6 +98,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :venue_id, :activity_id, :organiser_id, :num_players, :description)
+      params.require(:listing).permit(:title, :venue_id, :activity_id, :organiser_id, :num_players, :description, :date)
     end
 end
