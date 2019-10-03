@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_secure_password
+    has_secure_password 
 
     has_many :player_signups, foreign_key: "player_id"
     has_many :listings, through: :player_signups
