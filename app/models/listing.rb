@@ -19,11 +19,10 @@ class Listing < ApplicationRecord
     }
 
     def self.search(query)
-        if query
-          where('ACTIVITY_ID like ?', "%#{query}%")        
-        else
-          self.all
-        end
+      if query
+        where('TITLE like ?', "%#{query}%")        
+      else
+        self.all
       end
-
+    end
 end

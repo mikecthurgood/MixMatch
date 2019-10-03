@@ -1,11 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listings</h1>
-<br><br>
-<a href=<%=new_listing_path%>> <h2>Create Listing</h2> </a>
+<div class="listing-heading-container">
+  <div class="listing-heading">
+    <h1>Listings</h1><br>
+  </div>
+  <div class="listing-heading-item">
+    <div class="activity-search">
+      <%= form_tag listings_path, :method => 'get' do %>
+        <p>
+        <%= text_field_tag :query, nil, :placeholder => "Search Listings" %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+      <% end %>
+      <p><a href="/listings">Reset search</a></p>
+  </div>
+  </div>
+</div>
+
 <br>
 
 <div class="area-activities">
+
+<%= link_to new_listing_path, action: 'go' do %>
+      <div class="activity-card">
+      <div class="activity-card-image">
+      <img src="https://icon-library.net/images/plus-icon-transparent/plus-icon-transparent-5.jpg" alt="add new activity">
+      </div>
+      <br><br>
+        <h2>New Listing</h2>
+      </div>      
+<% end %>
+      
+
     <% @listings.each do |listing| %>
     <%= link_to listing_path(listing), action: 'go' do %>
       <div class="activity-card">

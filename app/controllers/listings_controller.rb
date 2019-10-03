@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
     if !params[:activity_id].blank?
       @listings = Listing.all.where(activity_id: params[:activity_id]).reverse
     else
-      @listings = Listing.all.reverse
+      @listings = Listing.all.search(params[:query]).reverse
     end
   end
 
