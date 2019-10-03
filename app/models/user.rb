@@ -21,6 +21,7 @@ class User < ApplicationRecord
         numericality: { 
             only_integer: true,
             greater_than: 16, 
+            less_than: 60
         }
     }
 

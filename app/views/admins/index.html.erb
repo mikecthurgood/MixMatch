@@ -1,10 +1,10 @@
 <h1>Admins page</h1>
 
-<p><%= link_to 'All users', users_path %></p>
-<p><%= link_to 'All activities', activities_path %></p>
-<p><%= link_to 'All listings', listings_path %></p>
-<p><%= link_to 'Activities needing to be accepted', unauthorised_activities_path %></p>
-<p>All users</p>
+<p><%= User.all.count%>, <%= link_to 'Users', users_path %></p>
+<p><%= Activity.all.count%>, <%= link_to 'Activities', activities_path %></p>
+<p><%= Listing.all.count%>, <%= link_to 'Listings', listings_path %></p>
+<p><%= @not_activities.count%>, <%= link_to 'Activities needing to be accepted', unauthorised_activities_path %></p>
+<p><%= Area.all.count%>, <%= link_to 'Areas', areas_path %></p>
 
 <p>All users</p>
 <p>All users</p>
