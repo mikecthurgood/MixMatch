@@ -42,7 +42,7 @@
       </div>
       <br>
         <h3><%= listing.title %></h3>
-          <p><%= listing.date.strftime("%a, %d %b") %></p><br>
+          <p><%= listing.date %></p><br>
           <h4><%= activity.name %></h4><br>
           <% ven = Venue.find_by(id: listing.venue_id) %>
           <p><%= ven.form_name %></p>

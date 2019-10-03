@@ -24,8 +24,12 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   root 'welcome#home'
 
-  get '/users/:id/edit_password', to: 'user#edit_password', as: 'edit_user_password'
-  patch '/users/:id', to: 'user#edit_password'
+  get '/users/:id/edit_password', to: 'users#edit_password', as: 'edit_user_password'
+  patch '/users/:id', to: 'users#edit_password'
+
+   # admin paths
+   get '/admin', to: 'admins#index', as: 'admin'
+   get '/admin/unauthorised_activities', to: 'admins#unauthorised_activities', as: 'unauthorised_activities'
 
   # get '/activities/:slug', to: 'activities#show', as: 'activity'
   # get '/activities/:slug/edit', to: 'activities#edit', as: 'edit_activity'

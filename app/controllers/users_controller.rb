@@ -29,11 +29,18 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @profile = User.find(params[:id])
+    if @user.admin || @profile.id == @user.id
+      render "edit"
+    else
+      flash[:notice] = "You cannot edit someone else's profile."
+      redirect_back(fallback_location: root_path)
+    end
   end
 
-  def edit_password
-    @profile = User.find(params[:id])
-  end
+  # def edit_password
+  #   @profile = User.find(params[:id])
+  #   render "edit_password"
+  # end
 
   # POST /users
   # POST /users.json
@@ -71,6 +78,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    @profile = User.find(params[:id])
     @profile.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }

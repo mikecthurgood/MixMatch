@@ -3,7 +3,7 @@ class Listing < ApplicationRecord
     has_many :players, through: :player_signups
     belongs_to :venue
     belongs_to :activity
-    belongs_to :organiser, class_name: "User", dependent: :destroy
+    belongs_to :organiser, class_name: "User"
 
     after_create :update_search_tags
     before_update :assign_search_tags

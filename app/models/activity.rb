@@ -116,6 +116,10 @@ class Activity < ApplicationRecord
         plr_ids = self.listings.map {|list| list.organiser_id}
         players = plr_ids.map {|id| User.find(id)}
     end
+
+    def self.unauthorised_activities
+        activities = Activity.all.select {|activity| activity.authorised == false}
+    end
     
       private
     
