@@ -5,6 +5,8 @@ class Activity < ApplicationRecord
 
     after_create :update_slug
     before_update :assign_slug
+    after_create :update_search_tags
+    before_update :assign_search_tags
 
     validates :name, :image_url, presence: true
     validates :description, {
@@ -20,6 +22,21 @@ class Activity < ApplicationRecord
     def update_slug
         update_attributes slug: assign_slug
     end
+
+    def create_search_tags
+        search_tags = []
+        search_tags << self.name
+        search_tags << self.description
+        search_tags.join(" ")
+      end
+  
+      def assign_search_tags
+        self.tags = create_search_tags
+      end
+  
+      def update_search_tags
+        update_attributes tags: assign_search_tags
+      end
 
     
     def self.search(query)

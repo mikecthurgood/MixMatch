@@ -12,6 +12,14 @@ class ListingsController < ApplicationController
     end
   end
 
+  def remove_player
+    listing = Listing.find(params[:listing_id])
+    signup = PlayerSignup.find_by(listing_id: listing.id, player_id: @user.id)
+    signup.destroy
+    flash[:notice] = "You're no longer attending this event. We've let the organiser know"
+    redirect_to listing_path(listing)
+  end
+
   def join
     listing = Listing.find(params[:id])
     if listing.players.include? @user

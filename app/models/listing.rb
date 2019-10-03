@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-    has_many :player_signups
+    has_many :player_signups, dependent: :destroy
     has_many :players, through: :player_signups
     belongs_to :venue
     belongs_to :activity

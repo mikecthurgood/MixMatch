@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'admins/scaffold'
-  resources :player_signups
+  resources :player_signups, only: [:delete]
   resources :listings
   resources :users
   resources :activities
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   post 'listings/:id', to: 'listings#join', as: 'join_listing'
+  post 'player_signups/:id', to: 'listings#remove_player', as: 'delete_player_signup'
+
 
   # param: :slug
   get '/login' => 'sessions#new', as: 'login'

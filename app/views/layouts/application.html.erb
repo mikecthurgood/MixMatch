@@ -21,7 +21,7 @@
         </div>
           <% if logged_in? %>
           <div class="link-button">
-            Logged In as <%= link_to @user.name, user_path(@user) %>
+            Logged In as <%= link_to @user.name, '/users/new' %>
             <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
             <input type=submit value='logout'>
             <% end %>

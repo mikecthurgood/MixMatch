@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_125134) do
+ActiveRecord::Schema.define(version: 2019_10_03_183327) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_10_03_125134) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "authorised", default: false
     t.string "slug"
+    t.string "tags"
   end
 
   create_table "areas", force: :cascade do |t|
