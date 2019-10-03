@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     def require_admin?
       unless  @user.admin
         flash[:notice] = "Sorry only administrators can view this page"
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
       end
     end
 
