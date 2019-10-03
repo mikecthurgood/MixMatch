@@ -26,15 +26,9 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
   <%= f.submit "update" %>
 <% end %>
 </div>
 
 <%= link_to 'Show', @profile %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', user_path(@user.id) %>
