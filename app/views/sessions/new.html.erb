@@ -2,6 +2,15 @@
   <div class="login-heading">
     <H1>Please log in to your MixMatch account</H1>
   </div>
+  <% if flash[:notice] %>
+  <div id="error_explanation">
+  <h2>There were some errors on your signup: </h2>
+      <ul>
+          <li><%= flash[:notice] %></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
   <%= form_for @user, url: login_path, method: :post do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>

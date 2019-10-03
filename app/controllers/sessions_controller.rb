@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
         @user = user
         redirect_to controller: 'welcome', action: 'home'
       else
+        flash[:notice] = "Sorry you are not logged in. Please Log in or Sign Up, because weird is wonderful together"
         redirect_to(controller: 'sessions', action: 'new') 
       end
     end
