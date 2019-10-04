@@ -75,6 +75,7 @@
     padding: 15px;
     justify-content: right;
     font-size: 17px;
+    
   }
 
   .link-button {
@@ -82,6 +83,9 @@
     padding: 0px;
     justify-content: right;
     font-size: 17px;
+    display: flex;
+    flex-direction: row;
+    width: 300px;
     
   }
 
@@ -91,6 +95,11 @@
       &:hover {
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
       }
+  }
+
+  .loggedin-as {
+    padding-top: 3%;
+    margin-right: 5%;
   }
 
   .links a {

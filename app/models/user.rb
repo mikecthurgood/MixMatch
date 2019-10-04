@@ -37,5 +37,38 @@ class User < ApplicationRecord
         format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
     }
 
+    def events_attended
+        PlayerSignup.all.where(player_id: self.id)
+    end
+
+    def events_organised
+        Listing.all.where(organiser_id: self.id)
+    end
+
+    def listings_attending
+        listings = []
+        self.events_attended.each do |signup|
+            listing = Listing.find(signup.listing_id)
+            listings << listing
+        end
+        listings.uniq
+    end
+
+    def activities
+        activities = []
+        self.events_organised.each do |listing|
+            activity = Activity.find(listing.activity_id)
+            activities << activity
+        end
+        self.events_attended.each do |signup|
+            list = Listing.find(signup.listing_id)
+            activity = Activity.find(list.activity_id)
+            activities << activity
+        end
+        activities.uniq
+    end
+
+
+
 
 end

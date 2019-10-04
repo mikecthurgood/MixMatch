@@ -12,7 +12,7 @@
       <% if @listing.num_players - @listing.players.length > 0 %>
         <h2><%= @listing.num_players - @listing.players.length %> spots remaining.</h2><br>
       <% else %>
-        <h2>All the spots are filled for this event.</h2><br>
+        <h2 style="color:#f07727">All the spots are filled for this event.</h2><br>
       <% end %>
       <% if @listing.players.include? @user %>
       <%= button_to "I can't make it", delete_player_signup_path, :method => :post, :params => { listing_id: @listing.id } %>
@@ -63,8 +63,12 @@
           <%= @listing.num_players %> <br><br>
         </div>
         <div class="listing-item">
+        <% if @listing.num_players - @listing.players.length < 0 %>
+          <p><strong style="color:#f07727">All spots filled</strong></p>
+        <% else %>
           <strong>Number of players attending:</strong>
           <%= @listing.players.length %>
+        <% end %>
         </div>
       </div>
     </div>
