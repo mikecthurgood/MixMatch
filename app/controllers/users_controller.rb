@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     if !@user
       redirect_to root_path
     end
+    @num_total_attended = @profile.events_attended.length
+    @num_organised = @profile.events_organised.length
+    @organised = @profile.events_organised
+    @activities = @profile.activities
+    @listings = @profile.listings_attending
   end
 
   # GET /users/new

@@ -20,10 +20,15 @@
         </div>
           <% if logged_in? %>
           <div class="link-button">
-            Logged In as <%= link_to @user.name, user_path(@user.id) %>
+            <div class="loggedin-as">
+            Logged In as <%= @user.name %> <br>
+            <p><%= link_to 'View Profile', user_path(@user.id) %></p>
+            </div>
+            <div class="logout-button">
             <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
             <input type=submit value='logout'>
             <% end %>
+            </div>
           </div>
           <% else %>
         <div class="links">
