@@ -121,10 +121,11 @@ class Activity < ApplicationRecord
         activities = Activity.all.select {|activity| activity.authorised == false}
     end
     
-      private
-    
-      def assign_slug
+    def assign_slug
         self.slug = create_slug
       end
+      private
+    
+     
 
 end
