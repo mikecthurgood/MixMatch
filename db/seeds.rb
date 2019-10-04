@@ -189,3 +189,7 @@
 # Listing.all.each do |listing|
 #     listing.assign_search_tags
 # end
+
+# Activity.all.each do |activity|
+#     activity.save
+# end

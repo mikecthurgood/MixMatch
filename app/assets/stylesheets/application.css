@@ -20,6 +20,12 @@
     background-color: #D6E9FE;
     display: flex;
     justify-content: center;
+    width: 100%;
+  }
+
+  .page-container {
+    margin: 0px;
+    padding: 0px;
   }
 
   .header {
@@ -41,6 +47,7 @@
     color: #fff;
     background-color: #5995DA;  /* Blue */
     padding: 0px 0;
+    top: 0;
     padding-left: 30px;
     display: flex;
     justify-content: space-between;
@@ -75,6 +82,15 @@
     padding: 0px;
     justify-content: right;
     font-size: 17px;
+    
+  }
+
+  .link-button input {
+    float: right;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+      }
   }
 
   .links a {
@@ -116,6 +132,12 @@
     background-color: #4CAF50;
     color: white;
   }
+
+  .login-page {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 17%;
+  }
   
   .login-heading {
     margin-top: 20px;
@@ -123,8 +145,8 @@
   }
 
   .site-content {
-    margin-left: 30px;
-    margin-top: 30px
+    height: 100%;
+    margin: 30px;
   }
 
   .heading-container {
@@ -180,15 +202,15 @@
   }
   
   .footer-container {
-    align-self: baseline;
     min-width: 100%;
     min-height: 100px;
     max-height: 17%;
     height: 100%;
     margin-top: 20px;
     padding: 0;
+    position: relative;
     display: flex;
-    position: absolute;
+    bottom: 0;
     justify-content: center;
   }
 
@@ -212,6 +234,7 @@
     margin-top: 18px;
     margin-left: 12%;
     display: flex;
+    height: fit-content;
     justify-content: space-between;
     text-align: center; 
   }
@@ -224,6 +247,7 @@
     float: left;
     padding-left: 20px;
     padding-right: 30px;
+    height: fit-content;
   }
 
   .legal-bumf p {
@@ -233,6 +257,7 @@
   .nav-menu {
     padding-left: 30px;
     padding-right: 30px;
+    padding-bottom: 20px;
   }
 
   .footer a {

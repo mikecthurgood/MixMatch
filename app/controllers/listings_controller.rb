@@ -7,9 +7,9 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     if !params[:activity_id].blank?
-      @listings = Listing.all.where(activity_id: params[:activity_id]).reverse
+      @listings = Listing.all.where(activity_id: params[:activity_id]).sort_by(&:date).reverse
     else
-      @listings = Listing.all.search(params[:query]).reverse
+      @listings = Listing.all.search(params[:query]).sort_by(&:date)
     end
   end
 

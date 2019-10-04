@@ -4,16 +4,19 @@
   box-sizing: border-box;
 }
 
-body {
+html {
+  width: 100%;
+}
 
+body {
   color: #333;
-  margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
   background-color: azure;
   margin: 0;
   padding: 0;
+  width: 100%;
   
 }
 

@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :activity_id %>
-    <%= form.collection_select(:activity_id, Activity.all, :id, :name) %>
+    <%= form.collection_select(:activity_id, Activity.all.where(authorised: true), :id, :name) %>
   </div>
 
   <div class="field">
@@ -37,7 +37,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label 'Description (Min 30 characters)' %>
     <%= form.text_area :description, size: "50x10" %>
   </div>
 
