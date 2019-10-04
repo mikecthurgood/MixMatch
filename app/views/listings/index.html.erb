@@ -57,7 +57,13 @@
           <% end %>
           <% @listings.each do |listing| %>
             <%= link_to listing_path(listing), action: 'go' do %>
+              <% if listing.players.include? @user %>
+              <div class="listing-card-attending">  
+              <% elsif listing.organiser_id == @user.id %>
+              <div class="listing-card-organiser">
+              <% else %>
               <div class="listing-card">
+              <% end %>
                 <div class="listing-card-image">
                   <% activity = Activity.find_by(id: listing.activity_id) %> 
                   <img src=<%= activity.image_url %> alt=<%activity.name%>>
@@ -70,7 +76,12 @@
                 <br>
                 <% ven = Venue.find_by(id: listing.venue_id) %>
                 <p><%= ven.form_name %></p>
+                <% if listing.num_players - listing.players.length <= 0 %>
+                <br>
+                <p><strong style="color:#f07727">All spots filled</strong></p> 
+                <% else %>
                 <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
+                <% end %>
               </div>
             <% end %>
           <% end %>

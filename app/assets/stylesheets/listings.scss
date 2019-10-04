@@ -19,11 +19,15 @@
 
   .listing-title {
     float: left;
+    width: 40%;
+    height: 100%;
+    
   }
 
   .listing-title h1 {
     font-size: 48px;
     color: #5995DA;
+    line-height: 48px;
   }
 
   .listing-rosette {
@@ -207,6 +211,33 @@
       &:hover {
         transition: 0.3s;
       }
+  }
+
+  .listing-card-attending {
+    /* Add shadows to create the "card" effect */
+    box-sizing: border-box;
+    box-shadow: 0 8px 12px 0 #5995DA;
+    transition: 0.3s;
+    padding: 20px 16px;
+    margin: 5px;
+    text-decoration: none;
+    max-width: 200px;
+    height: 350px;
+    background-color: #fac9a8
+  }
+
+
+
+  .listing-card-organiser {
+    /* Add shadows to create the "card" effect */
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(204, 122, 14, 0.7);
+    transition: 0.3s;
+    padding: 20px 16px;
+    margin: 5px;
+    text-decoration: none;
+    max-width: 200px;
+    height: 350px;
   }
 
   .listing-card a {

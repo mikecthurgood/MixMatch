@@ -1,29 +1,88 @@
 <p id="notice"><%= notice %></p>
 <div class="user-show">
+  <div class="profile-information-container">
+    <div class="profile-information">
+      <div class="profile-name">
+      <H1><%= @profile.name %>'s profile</H1> <br>  <%= link_to 'Edit Profile', edit_user_path(@profile) %>
+      </div>
+    <div class="profile-details-card">
+      <p>
+        <strong>Age:</strong>
+        <%= @profile.age %>
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @profile.name %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @profile.email %>
+      </p>
+      <p>
+        <strong>Events attended:</strong>
+        <%= @num_total_attended %>
+      </p>
+      <strong>Events organised:</strong>
+        <%= @num_organised %>
+      </p>
+      <br>
+      <strong>Bio:</strong><br>
+      <%= @profile.bio %>
+    </div>
+    <br>
 
-<p>
-  <strong>Age:</strong>
-  <%= @profile.age %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @profile.email %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @profile.admin %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@profile) %> |
-<%= link_to 'Back', users_path %> |
-<% if @profile.admin %>
-<%= link_to "Admin Panel", admin_path %>
-<% end %>
+    <% if @profile.admin %>
+    <%= link_to "Admin Panel", admin_path %>
+    <% end %>
+    </div>
+  </div>
+  <div class="user-listings-container">
+  <h3>Events Organised</h3><br>
+    <div class="user-listings">
+      <% if @organised.blank? %>
+        <p>You haven't organised any events. Head over to <%= link_to 'the listings page', listings_path %> to create one</p><br><br>
+      <% else %>
+      <% @organised.each do |listing| %>
+        <%= link_to listing_path(listing), action: 'go' do %>
+          <div class="listing-card">
+            <div class="listing-card-image">
+              <% activity = Activity.find_by(id: listing.activity_id) %> 
+              <img src=<%= activity.image_url %> alt=<%activity.name%>>
+            </div>
+            <br>
+            <h3><%= listing.title %></h3>
+            <p><%= listing.date.strftime("%a, %d %b") %></p>
+            <br>
+            <h4><%= activity.name %></h4>
+            <br>
+            <% ven = Venue.find_by(id: listing.venue_id) %>
+            <p><%= ven.form_name %></p>
+            <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
+          </div>
+        <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="user-listings-container">
+  <h3>Upcoming Events</h3><br>
+    <div class="user-listings">
+      <% @listings.each do |listing| %>
+        <%= link_to listing_path(listing), action: 'go' do %>
+          <div class="listing-card">
+            <div class="listing-card-image">
+              <% activity = Activity.find_by(id: listing.activity_id) %> 
+              <img src=<%= activity.image_url %> alt=<%activity.name%>>
+            </div>
+            <br>
+            <h3><%= listing.title %></h3>
+            <p><%= listing.date.strftime("%a, %d %b") %></p>
+            <br>
+            <h4><%= activity.name %></h4>
+            <br>
+            <% ven = Venue.find_by(id: listing.venue_id) %>
+            <p><%= ven.form_name %></p>
+            <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

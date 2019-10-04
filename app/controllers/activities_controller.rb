@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/:slug
   # GET /activities/1.json
   def show
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find_by_slug(params[:id])
   end
 
   # GET /activities/new
