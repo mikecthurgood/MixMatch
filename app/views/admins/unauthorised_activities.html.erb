@@ -1,5 +1,7 @@
 <h1>The following activities need to be authorised by an admin</h1>
+<br>
 <% @not_activities.each do |activity| %>
-<h2>This activity <%= link_to activity.name, activity_path(activity.id) %> is currently authorised as <%= activity.authorised %></h2>
-<h3>Would you like to <%= link_to "authorise?", authorise_activity_path(31) %></h3>
+<p>This activity <%= link_to activity.name, activity_path(activity.slug) %> is currently authorised as <%= activity.authorised %></p>
+<p>Would you like to <%= link_to "authorise?", "/admin/unauthorised_activities/#{activity.slug}/edit" %></p>
+<br>
 <% end %>

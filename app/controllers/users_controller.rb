@@ -80,6 +80,7 @@ class UsersController < ApplicationController
   def update_password
     @profile = User.find(params[:id])
   end
+  
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

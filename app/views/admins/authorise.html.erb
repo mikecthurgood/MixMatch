@@ -1,32 +1,21 @@
 <h1>You are currently trying to authorise <%= @activity.name%> and add it to the database.</h2>
-<%= form_for :activity do |f| %>
+<%= form_for @activity do |f| %>
 
-  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, required: true %>
-  </div>
 
-  <div class="field">
     <%= f.label 'Description: (please be as detailed as you can)' %>
     <%= f.text_area :description, size: "50x10", required: true %>
-  </div>
 
-  <div class="field">
     <%= f.label :image_url %>
     <%= f.text_field :image_url %>
-  </div>
 
-  <div class="field">
     <%= f.label :wiki_link %>
     <%= f.text_field :wiki_link, required: true%>
-  </div>
 
-  <div class="field">
     <%= f.label :authorised %>
     <%= f.check_box :authorised, required: true%>
-  </div>
 
-  <div class="actions">
-  <%= f.submit %>
+  <%= f.submit, :params => = {activity_slug: @activity.slug} %>
 <% end %>
-<%= button_to "Delete #{@activity.name} and remove from database", activity_path(@activity.id), method: :delete, data:{confirm:'Are you sure?'} %>
+<%= button_to "Delete #{@activity.name} and remove from database", update_activity_path(@activity.id), method: :delete, data:{confirm: "Are you sure you want to permenantly remove #{@activity.name} from the database?"} %>
