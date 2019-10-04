@@ -3,7 +3,7 @@
   <h1>Areas</h1>
   <br><br>
   <% if @user.admin %>     
-  <%= link_to 'New Area', new_area_path %>
+  <%= link_to 'New Area', new_admin_area_path %>
   <br><br>
   <% end %>
   <div class="area-list">
@@ -13,7 +13,7 @@
         <h2><%= area.name %></h2><br>
         <h3>Current listings: <%= area.listings.length %></h3>
         <% if @user.admin %> | 
-          <%= link_to 'Edit', edit_area_path(area) %> | <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_admin_area_path(area) %> | <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
          </div>
       <% end %>

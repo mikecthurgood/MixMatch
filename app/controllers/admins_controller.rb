@@ -1,6 +1,9 @@
 class AdminsController < ApplicationController
 
+  before_action :require_admin?
+
   def index
+    @not_activities = Activity.unauthorised_activities
   end
 
   def show
@@ -11,8 +14,9 @@ class AdminsController < ApplicationController
     @not_activities = Activity.unauthorised_activities
   end
 
-  def authorise_activity
-    
+  def authorise
+    byebug
+    @activity = Activity.find(params[:id])
   end
 
 end

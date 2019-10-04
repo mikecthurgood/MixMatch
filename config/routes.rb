@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :users, only: [:delete]
     resources :venues, only: [:delete]
     resources :activities
-    resources :areas
+    resources :areas, only: [:new, :create, :edit]
     resources :listings
   end
 
@@ -28,8 +28,9 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#edit_password'
 
    # admin paths
-   get '/admin', to: 'admins#index', as: 'admin'
-   get '/admin/unauthorised_activities', to: 'admins#unauthorised_activities', as: 'unauthorised_activities'
+  get '/admin', to: 'admins#index', as: 'admin'
+  get '/admin/unauthorised_activities', to: 'admins#unauthorised_activities', as: 'unauthorised_activities'
+  get '/admin/activities/:id/edit', to: 'admins#authorise', as: 'authorise_activity'
 
   # get '/activities/:slug', to: 'activities#show', as: 'activity'
   # get '/activities/:slug/edit', to: 'activities#edit', as: 'edit_activity'

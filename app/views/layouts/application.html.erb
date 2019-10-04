@@ -18,12 +18,16 @@
           <%= link_to 'Listings', listings_path %>
           <%= link_to 'Areas', areas_path %>
         </div>
-        <% if logged_in? %>
-        <div class="link-button">
-          Logged In as <%= link_to @user.name, '/users/new' %>
-          <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-          <input type=submit value='logout'>
-          <% end %>
+          <% if logged_in? %>
+          <div class="link-button">
+            Logged In as <%= link_to @user.name, user_path(@user.id) %>
+            <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+            <input type=submit value='logout'>
+            <% end %>
+          </div>
+          <% else %>
+          <div class="links">
+            <div class='signup'><a href="users/new">Sign Up</a></div>
         </div>
         <% else %>
         <div class="links">
