@@ -30,7 +30,9 @@ Rails.application.routes.draw do
    # admin paths
   get '/admin', to: 'admins#index', as: 'admin'
   get '/admin/unauthorised_activities', to: 'admins#unauthorised_activities', as: 'unauthorised_activities'
-  get '/admin/activities/:id/edit', to: 'admins#authorise', as: 'authorise_activity'
+  get '/admin/unauthorised_activities/:id/edit', to: 'admins#authorise', as: 'authorise_activity'
+  patch 'admin/unauthorised_activities/:id', to: 'admins#update'
+  delete 'admin/unauthorised_activities/:id', to: 'admins#delete'
 
   # get '/activities/:slug', to: 'activities#show', as: 'activity'
   # get '/activities/:slug/edit', to: 'activities#edit', as: 'edit_activity'
