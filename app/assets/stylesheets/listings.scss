@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
   .listing-show {
-      width: 95vw;
+      width: 100%;
+      height: 100%;
       padding-bottom: 100px;
+      box-sizing: border-box;
   }
 
   .listing-head {
@@ -78,7 +80,8 @@
   .listing-heading-container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    flex-direction: column
   }
 
   .listing-heading {
@@ -88,13 +91,53 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    height: 100%;
   }
 
-  .listing-heading-item {
-    margin-bottom: 20px;
+  .listing-search-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     flex-direction: column;
-    padding-right: 45px
+    height: 100%;
   }
+
+  .listing-search {
+    color: #5995DA;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .reset-search-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: fit-content;
+    height: 100%;
+  }
+
+  .reset-search {
+    color: #5995DA;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-right: 60px;
+  }
+
+  .listings-index-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
   .new-listing-card {
     /* Add shadows to create the "card" effect */

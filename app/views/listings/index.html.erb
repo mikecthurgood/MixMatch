@@ -1,59 +1,83 @@
 <p id="notice"><%= notice %></p>
-
-<div class="listing-heading-container">
-  <div class="listing-heading">
-    <h1>Listings</h1><br>
+<div class="listing-show">
+  <div class="listing-heading-container">
+    <div>
+      <div>
+        <div>
+          <div class="listing-heading">
+            <h1>Listings</h1><br>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="listing-heading-item">
-    <div class="activity-search">
-      <%= form_tag listings_path, :method => 'get' do %>
-        <p>
-        <%= text_field_tag :query, nil, :placeholder => "Search Listings" %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
-      <% end %>
-      <br>
-      <h2><a href="/listings">Reset search</a></h2>
+  <div class="listing-search-container">
+    <div>
+      <div>
+        <div>
+          <div class="listing-search">
+          <%= form_tag listings_path, :method => 'get' do %>
+            <p>
+              <%= text_field_tag :query, nil, :placeholder => "Search Listings" %>
+              <%= submit_tag "Search", :name => nil %>
+            </p>
+          <% end %>
+          <br>
+          </div>
+        </div>
+      <div>
+    </div>
+  </div>
+  <div class="reset-search-container">
+    <div>
+      <div>
+        <div>
+          <div class="reset-search">
+            <h2><a href="/listings">Reset search</a></h2>
+          </div>
+        </div>
+      <div>
     </div>
   </div>
 </div>
-
-<br>
-
-<div class="area-activities">
-
-<%= link_to new_listing_path, action: 'go' do %>
-      <div class="new-listing-card">
-      <div class="new-listing-card-image">
-      <img src="https://icon-library.net/images/plus-icon-transparent/plus-icon-transparent-5.jpg" alt="add new activity">
-      </div>
-      <br><br>
-        <h2>New Listing</h2>
-      </div>      
-<% end %>
-      
-
-    <% @listings.each do |listing| %>
-    <%= link_to listing_path(listing), action: 'go' do %>
-      <div class="listing-card">
-      <div class="listing-card-image">
-      <% activity = Activity.find_by(id: listing.activity_id) %> 
-      <img src=<%= activity.image_url %> alt=<%activity.name%>>
-      </div>
-      <br>
-        <h3><%= listing.title %></h3>
-          <p><%= listing.date %></p><br>
-          <h4><%= activity.name %></h4><br>
-          <% ven = Venue.find_by(id: listing.venue_id) %>
-          <p><%= ven.form_name %></p>
-          <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
+</div>
+  <br>
+  <div>
+    <div>
+      <div>
+        <div class="listings-index-container">
+          <%= link_to new_listing_path, action: 'go' do %>
+            <div class="new-listing-card">
+              <div class="new-listing-card-image">
+                <img src="https://icon-library.net/images/plus-icon-transparent/plus-icon-transparent-5.jpg" alt="add new activity">
+              </div>
+              <br><br>
+              <h2>New Listing</h2>
+            </div>      
+          <% end %>
+          <% @listings.each do |listing| %>
+            <%= link_to listing_path(listing), action: 'go' do %>
+              <div class="listing-card">
+                <div class="listing-card-image">
+                  <% activity = Activity.find_by(id: listing.activity_id) %> 
+                  <img src=<%= activity.image_url %> alt=<%activity.name%>>
+                </div>
+                <br>
+                <h3><%= listing.title %></h3>
+                <p><%= listing.date.strftime("%a, %d %b") %></p>
+                <br>
+                <h4><%= activity.name %></h4>
+                <br>
+                <% ven = Venue.find_by(id: listing.venue_id) %>
+                <p><%= ven.form_name %></p>
+                <p>Spaces remaining: <%= listing.num_players - listing.players.length %></p>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-        <% end %>
-      <% end %>
-
-
-
-<br>
-
-
-  
+      </div>
+    </div>
+  </div>
+</div> 
+</div> 
+</div>

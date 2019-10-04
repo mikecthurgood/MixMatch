@@ -8,19 +8,23 @@
 
 
   <div class="activity-details">
-    <div class="activity-image">
-      <img src="<%= @activity.image_url %>" alt="#{<%= @activity.name %>} image">
+    <div class="activity-image-container">
+      <div class="activity-image">
+        <img src="<%= @activity.image_url %>" alt="#{<%= @activity.name %>} image">
+      </div>
     </div>
     <div class="activity-description">
-        <%= @activity.description %>
-        <br><br>
-        <%= button_to "Find a mixmatch I can join", "/listings", :method => :get, :params => { activity_id: @activity.id } %>
+      <%= @activity.description %>
+      <br><br>
+      <div class="activity-description-actions">
+        <div class="activity-listing-button">
+          <%= button_to "Find a mixmatch I can join", "/listings", :method => :get, :params => { activity_id: @activity.id } %>
+        </div>
+        <div class="activity-wiki-link">
+          <strong>Visit the <%= @activity.name %> <%= link_to 'Wikipedia Page', @activity.wiki_link %></strong><br>
+        </div>
+      </div>
     </div>
   </div>
-    <div class="activity-wiki">
-      <%= link_to @activity.wiki_link, action: 'go' do %>
-      <strong>Learn more about <%= @activity.name %></strong><br>
-      <%= link_to 'Back', activities_path %>
-      <% end %>
-    </div>
+</div>
 </div>

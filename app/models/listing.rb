@@ -11,7 +11,7 @@ class Listing < ApplicationRecord
     validates :title, :venue_id, :activity_id, :organiser_id, presence: true
     validates :description, {
         presence: true,
-        length: {minimum: 50}
+        length: {minimum: 30}
     }
     validates :num_players, {
         presence: true,

@@ -41,7 +41,7 @@ class Activity < ApplicationRecord
     
     def self.search(query)
         if query
-          where('DESCRIPTION like ?', "%#{query}%")        
+          where('TAGS like ?', "%#{query}%")        
         else
           self.all
         end
