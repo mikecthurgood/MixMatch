@@ -17,9 +17,9 @@ class UsersController < ApplicationController
     end
     @num_total_attended = @profile.events_attended.length
     @num_organised = @profile.events_organised.length
-    @organised = @profile.events_organised
+    @organised = @profile.events_organised.sort_by(&:date)
     @activities = @profile.activities
-    @listings = @profile.listings_attending
+    @listings = @profile.listings_attending.sort_by(&:date)
   end
 
   # GET /users/new
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
     @profile = User.find(params[:id])
     @profile.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

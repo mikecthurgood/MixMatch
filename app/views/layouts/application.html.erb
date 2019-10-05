@@ -72,8 +72,8 @@
           <div class="footer-account">
             <p><strong>User</strong></p>
             <% if @user.id %>
-              <p><%= link_to 'My Account', user_path(@user) %></p>
-              <p><%= link_to 'My Listings', listings_path %></p> 
+              <p><%= link_to 'View Profile', user_path(@user) %></p>
+              <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p> 
             <% else %>
               <p><%= link_to 'Log In', root_path %></p>
               <p><%= link_to 'Create Account', new_user_path %></p> 

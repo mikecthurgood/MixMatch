@@ -1,3 +1,4 @@
+<div class="edit_user_container">
 <h1>Create A New MixMatch Account</h1>
 <div class="user_errors">
 <% if @profile.errors.any? %>
@@ -30,5 +31,5 @@
 <% end %>
 </div>
 
-<%= link_to 'Show', @profile %> |
 <%= link_to 'Back', user_path(@user.id) %>
+</div>

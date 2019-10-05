@@ -1,37 +1,39 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p><br>
 <div class="user-show">
   <div class="profile-information-container">
-    <div class="profile-information">
       <div class="profile-name">
-      <H1><%= @profile.name %>'s profile</H1> <br>  <%= link_to 'Edit Profile', edit_user_path(@profile) %>
+      <H1><%= @profile.name %>'s profile</H1> <br>  
+      <%= button_to "Edit Profile", edit_user_path(@profile), :method => :get%> 
       </div>
-    <div class="profile-details-card">
-      <p>
-        <strong>Age:</strong>
-        <%= @profile.age %>
-      </p>
+      <div class="profile-information">
+      <div class="profile-details-card-container">
+      <h3>Details</h3><br>
+        <div class="profile-details-card">
+          <p>
+            <strong>Age:</strong>
+            <%= @profile.age %>
+          </p>
 
-      <p>
-        <strong>Email:</strong>
-        <%= @profile.email %>
-      </p>
-      <p>
-        <strong>Events attended:</strong>
-        <%= @num_total_attended %>
-      </p>
-      <strong>Events organised:</strong>
-        <%= @num_organised %>
-      </p>
-      <br>
-      <strong>Bio:</strong><br>
-      <%= @profile.bio %>
-    </div>
-    <br>
-
-    <% if @profile.admin %>
-    <%= link_to "Admin Panel", admin_path %>
-    <% end %>
-    </div>
+          <p>
+            <strong>Email:</strong>
+            <%= @profile.email %>
+          </p>
+          <p>
+            <strong>Events attended:</strong>
+            <%= @num_total_attended %>
+          </p>
+          <strong>Events organised:</strong>
+            <%= @num_organised %>
+          </p>
+          <br>
+          <strong>Bio:</strong><br>
+          <%= @profile.bio %>
+        </div>
+        <br>
+      </div>
+  <div class="empty">
+  </div>
+  <div class="empty">
   </div>
   <div class="user-listings-container">
   <h3>Events Organised</h3><br>
@@ -61,6 +63,7 @@
       <% end %>
     </div>
   </div>
+  </div>
   <div class="user-listings-container">
   <h3>Upcoming Events</h3><br>
     <div class="user-listings">
@@ -85,4 +88,6 @@
       <% end %>
     </div>
   </div>
+</div>
+      <%= button_to "Delete Profile", user_path(@profile), :method => :delete  %>
 </div>

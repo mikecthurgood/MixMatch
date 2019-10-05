@@ -1,21 +1,19 @@
-<h1>Create A New MixMatch Account</h1>
+<h1>Create A New MixMatch Account</h1><br>
 <div class="new-user-page">
 <div class="user_errors">
 <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2>There were some errors on your signup: </h2>
-      <ul>
         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <%= message %> <br>
         <% end %>
-      </ul>
     </div>
     <% end %>
   </div>
     
 <div class="new_user_form">
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
-  <%= f.label :name %>
+  <%= f.label 'User Name' %>
   <%= f.text_field :name, required: true %>
 
   <%= f.label :age %>

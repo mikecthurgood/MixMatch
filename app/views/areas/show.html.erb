@@ -9,7 +9,7 @@
     <div class="area-stats-card">
       <img src="https://icon-library.net/images/trophy-icon/trophy-icon-21.jpg" alt="trophy">
       <div class="container">
-        <p><strong>Most Popular Activity:</strong> <%= @most_popular.name %></p>
+        <p><strong>Most Popular Activity:</strong> <%=link_to @most_popular.name, "/activities/#{@most_popular.slug}" %></p>
         <p><strong>Number of organisers:</strong> <%= @organisers.length %></p>
         <p><strong>Number of players:</strong> <%= @players.length %></p>
       </div>

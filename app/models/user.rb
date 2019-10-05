@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
     validates :name, {
         presence: true,
+        uniqueness: true,
         length: { in: 2..30},
         format: { with: /\A([a-zA-Z]+[ \-']?)+[a-zA-Z]+\z/,
             message: "Name must be a real name, it only allows letters and a space between names" }
